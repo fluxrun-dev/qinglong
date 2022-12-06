@@ -45,15 +45,15 @@ RUN set -x \
     && cd ${QL_DIR} \
     && cp -f .env.example .env \
     && chmod 777 ${QL_DIR}/shell/*.sh \
-    && chmod 777 ${QL_DIR}/docker/*.sh \
+    && chmod 777 ${QL_DIR}/*.sh \
     && pnpm install --prod \
     && rm -rf /root/.pnpm-store \
     && rm -rf /root/.local/share/pnpm/store \
     && rm -rf /root/.cache \
     && rm -rf /root/.npm \
-    && git clone -b ${QL_BRANCH} https://github.com/${QL_MAINTAINER}/qinglong-static.git /static \
+    && git clone -b ${QL_BRANCH} https://github.com/whyour/qinglong-static.git /static \
     && mkdir -p ${QL_DIR}/static \
     && cp -rf /static/* ${QL_DIR}/static \
     && rm -rf /static
     
-ENTRYPOINT ["./docker/docker-entrypoint.sh"]
+ENTRYPOINT ["./docker-entrypoint.sh"]
