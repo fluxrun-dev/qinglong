@@ -1,6 +1,6 @@
 FROM python:3.10-alpine
 
-ARG QL_MAINTAINER="whyour"
+ARG QL_MAINTAINER="fluxrun-dev"
 LABEL maintainer="${QL_MAINTAINER}"
 ARG QL_URL=https://github.com/${QL_MAINTAINER}/qinglong.git
 ARG QL_BRANCH=develop
@@ -16,7 +16,6 @@ ENV PNPM_HOME=/root/.local/share/pnpm \
 WORKDIR ${QL_DIR}
 
 RUN set -x \
-    && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update -f \
     && apk upgrade \
     && apk --no-cache add -f bash \
